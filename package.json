@@ -23,11 +23,11 @@
     "lint": "eslint",
     "lint:staged": "lint-staged",
     "lint:fix": "eslint --fix",
-    "test": "TZ=UTC jest --config test/jest.json --runInBand --passWithNoTests --forceExit",
+    "test": "cross-env TZ=UTC jest --config test/jest.json --runInBand --passWithNoTests --forceExit",
     "deadcode": "ts-prune --project tsconfig.json --unusedInModule --skip *.json",
     "spell": "cspell lint --config cspell.json '{src,test}/**/*.ts' --color --gitignore --no-must-find-files --no-summary --no-progress || true",
     "upgrade:package": "ncu -u",
-    "migrate": "APP_ENV=migration nest start",
+    "migrate": "cross-env APP_ENV=migration nest start",
     "migrate:email": "nestjs-command migrate:email",
     "rollback:email": "nestjs-command rollback:email",
     "seed": "nestjs-command seed:country && nestjs-command seed:apikey && nestjs-command seed:role && nestjs-command seed:user",
@@ -100,6 +100,7 @@
     "@types/response-time": "^2.3.8",
     "@types/supertest": "^6.0.2",
     "@types/uuid": "^10.0.0",
+    "cross-env": "^7.0.3",
     "cspell": "^8.13.1",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.1.0",
@@ -124,7 +125,9 @@
       "eslint",
       "stop-only --file"
     ],
-    "*.{json,yaml}": ["prettier --write"]
+    "*.{json,yaml}": [
+      "prettier --write"
+    ]
   },
   "packageManager": "yarn@1.22.21",
   "engines": {
