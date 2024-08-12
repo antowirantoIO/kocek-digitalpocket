@@ -6,12 +6,13 @@ import {
     IsNumber,
     IsOptional,
     IsString,
+    IsUrl,
 } from 'class-validator';
 import {
     ENUM_APP_ENVIRONMENT,
     ENUM_APP_TIMEZONE,
-} from 'src/app/constants/app.enum.constant';
-import { ENUM_MESSAGE_LANGUAGE } from 'src/common/message/constants/message.enum.constant';
+} from 'src/app/enums/app.enum';
+import { ENUM_MESSAGE_LANGUAGE } from 'src/common/message/enums/message.enum';
 
 export class AppEnvDto {
     @IsString()
@@ -75,10 +76,6 @@ export class AppEnvDto {
     @IsNotEmpty()
     @Type(() => Boolean)
     DATABASE_DEBUG: boolean;
-
-    @IsNotEmpty()
-    @IsString()
-    AUTH_JWT_SUBJECT: string;
 
     @IsNotEmpty()
     @IsString()
@@ -151,4 +148,9 @@ export class AppEnvDto {
     @IsOptional()
     @IsString()
     SENTRY_DSN?: string;
+
+    @IsNotEmpty()
+    @IsUrl()
+    @IsString()
+    CLIENT_URL: string;
 }

@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import { ApiKeyModule } from 'src/common/api-key/api-key.module';
-import { ApiKeyAdminController } from 'src/common/api-key/controllers/api-key.admin.controller';
-import { AuthModule } from 'src/common/auth/auth.module';
-import { PaginationModule } from 'src/common/pagination/pagination.module';
+import { ApiKeyModule } from 'src/modules/api-key/api-key.module';
+import { ApiKeyAdminController } from 'src/modules/api-key/controllers/api-key.admin.controller';
+import { AuthModule } from 'src/modules/auth/auth.module';
 import { CountryAdminController } from 'src/modules/country/controllers/country.admin.controller';
 import { CountryModule } from 'src/modules/country/country.module';
 import { EmailModule } from 'src/modules/email/email.module';
@@ -24,7 +23,6 @@ import { UserModule } from 'src/modules/user/user.module';
     exports: [],
     imports: [
         ApiKeyModule,
-        PaginationModule,
         SettingModule,
         RoleModule,
         UserModule,
